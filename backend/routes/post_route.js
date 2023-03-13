@@ -29,9 +29,9 @@ router.post('/createpost', fetchuser, [
         // console.log(req.user);
 
         const savePost = await postObj.save() //saves the entries
-            // .then((newpost) => {
-            //     res.status(201).json({ post: newpost })
-            // })
+        // .then((newpost) => {
+        //     res.status(201).json({ post: newpost })
+        // })
         // res.json(savedSale);
         res.json(savePost)
 
@@ -170,6 +170,40 @@ router.delete('/deletesale/:id', fetchuser, async (req, res) => {
     }
 
 })
+
+//Route LIKE functionality
+router.put("/like", fetchuser, (req, res) => {
+    PostModel.findByIdAndUpdate(req.body.postId, {
+        $push: { likes: req.user.id }
+    }, {
+        new: true
+    }).populate('author', 'id fullName')
+        .exec((err, result) => {
+            if (err) {
+                return res.status(400).json({ error: error })
+            } else {
+                res.json(result)
+            }
+        })
+}
+);
+
+//Route UNLIKE functionality
+router.put("/unlike", fetchuser, (req, res) => {
+    PostModel.findByIdAndUpdate(req.body.postId, {
+        $pull: { likes: req.user.id }
+    }, {
+        new: true
+    }).populate('author', 'id fullName')
+        .exec((err, result) => {
+            if (err) {
+                return res.status(400).json({ error: error })
+            } else {
+                res.json(result)
+            }
+        })
+}
+);
 
 
 module.exports = router;
