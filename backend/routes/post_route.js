@@ -205,5 +205,26 @@ router.put("/unlike", fetchuser, (req, res) => {
 }
 );
 
+//Route COMMENT functionality
+router.put("/comment", fetchuser, (req, res) => {
+
+    const comment = { commentText: req.body.commentText, commentedBy: req.user.id }
+
+    PostModel.findByIdAndUpdate(req.body.postId, {
+        $push: { comments: comment }
+    }, {
+        new: true
+    }).populate('comments.commentedBy', 'id fullName') //user who commented
+        .populate("author", "id fullName") //post owner
+        .exec((err, result) => {
+            if (err) {
+                return res.status(400).json({ error: error })
+            } else {
+                res.json(result)
+            }
+        })
+}
+);
+
 
 module.exports = router;
