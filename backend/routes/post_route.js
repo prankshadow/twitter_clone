@@ -28,11 +28,12 @@ router.post('/createpost', fetchuser, [
         })
         // console.log(req.user);
 
-        await postObj.save() //saves the entries
-            .then((newpost) => {
-                res.status(201).json({ post: newpost })
-            })
+        const savePost = await postObj.save() //saves the entries
+            // .then((newpost) => {
+            //     res.status(201).json({ post: newpost })
+            // })
         // res.json(savedSale);
+        res.json(savePost)
 
     } catch (error) {
         console.log(error.message);
@@ -58,15 +59,32 @@ router.post('/createpost', fetchuser, [
 // });
 
 // ROUTER 2 :-> Get all the sales.
-router.get('/allpost', fetchuser, async (req, res) => {
+// router.get('/allpost', fetchuser, async (req, res) => {
+//     try {
+//         const total = await PostModel.find({ user: req.user.id });
+//         res.json(total);
+//     } catch (error) {
+//         console.log(error.message);
+//         res.status(500).send("Internal Server Error. Unable to add entries.")
+//     }
+// });
+
+
+router.get('/allposts', fetchuser, async (req, res) => {
     try {
-        const total = await PostModel.find({ user: req.user.id });
-        res.json(total);
+        const posts = await PostModel.find({ author: req.user.id });
+        res.json(posts)
     } catch (error) {
-        console.log(error.message);
-        res.status(500).send("Internal Server Error. Unable to add entries.")
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
     }
-});
+})
+
+
+
+
+
+
 
 
 
@@ -133,22 +151,22 @@ router.delete('/deletesale/:id', fetchuser, async (req, res) => {
 
     try {
         //Find the sale an delete it
-        let sale = await PostModel.findById(req.params.id);
-        if (!sale) {
+        let post = await PostModel.findById(req.params.id);
+        if (!post) {
             return res.status(404).send("Not Found")
         }
 
         //Allow deletion onlu user owns this note
-        if (sale.user.toString() !== req.user.id) {   //toString() give the id of this note
+        if (post.author.toString() !== req.user.id) {   //toString() give the id of this note
             return res.status(401).send("Not allowed");
         }
 
-        sale = await PostModel.findByIdAndDelete(req.params.id);
-        res.json({ "Success": "Note as been successfully deleted", sale: sale });
+        post = await PostModel.findByIdAndDelete(req.params.id);
+        res.json({ "Success": "Note as been successfully deleted", post: post });
 
     } catch (error) {
         console.log(error.message);
-        res.status(500).send("Internal Server Error. Unable to add entries.")
+        res.status(500).send("Internal Server Error. Unable to delete entries.")
     }
 
 })
