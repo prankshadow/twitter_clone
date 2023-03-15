@@ -1,6 +1,6 @@
 import React from 'react'
 import './Middle.css'
-import Tweet from './Tweet'
+import Tweetloginuser from './Tweetloginuser'
 
 const Middle = () => {
   return (
@@ -19,13 +19,13 @@ const Middle = () => {
           <h5 className='m-auto'>Tweet and replies</h5>
         </div>
         <hr />
-        <Tweet />
-        <Tweet />
-        <Tweet />
-        <Tweet />
-        <Tweet />
-        <Tweet />
-        <Tweet />
+        <Tweetloginuser />
+        <Tweetloginuser />
+        <Tweetloginuser />
+        <Tweetloginuser />
+        <Tweetloginuser />
+        <Tweetloginuser />
+        <Tweetloginuser />
       </div>
     </>
   )

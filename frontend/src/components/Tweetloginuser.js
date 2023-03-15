@@ -1,5 +1,5 @@
 import React from 'react'
-import './Tweet.css'
+import './Tweetloginuser.css'
 
 const Tweet = (props) => {
     return (
@@ -10,8 +10,8 @@ const Tweet = (props) => {
                     <h6 className='my-auto ps-2'>Prank Shadow</h6>
                 </div>
                 <div className='card-body'>
-                    <p className='card-text'>{props.postData.description}</p>
-                    <img src={props.postData.image} className='tweet-pic img-fluid pb-3' alt='tweet' />
+                    <p className='card-text'>Description</p>
+                    <img src='https://bit.ly/3FpWmds' className='tweet-pic img-fluid pb-3' alt='tweet' />
 
                     <div className='ps-3'>
                         <a href='/' className='pe-3' style={{ 'textDecoration': 'none', 'color': 'black' }}><i className="fa-regular fa-heart pe-1" style={{ 'color': 'red' }}></i>0</a>

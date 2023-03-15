@@ -70,7 +70,7 @@ const Left = () => {
                     title: 'Successfully tweeted'
                 })
                 setShow(false)
-                navigate('/homepage');
+                // navigate('/homepage');
             } else {
                 Swal.fire({
                     icon: 'error',

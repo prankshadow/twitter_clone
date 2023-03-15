@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Tweet from '../components/Tweet'
 import { API_BASE_URL } from '../config'
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import Homepagetweet from '../components/Homepagetweet';
 
 const Alltweets = () => {
     const CONFIG_OBJ = {
@@ -53,7 +53,7 @@ const Alltweets = () => {
                     {allposts.map((post) => {
                         return (
                             <div>
-                                <Tweet postData={post} />
+                                <Homepagetweet postData={post} />
                             </div>
                         )
                     })}
