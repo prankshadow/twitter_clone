@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const { MONGODB_URL } = require('./config');
 var cors = require('cors');
 
-
+global.__basedir = __dirname;
 mongoose.connect(MONGODB_URL);
 
 mongoose.connection.on('Connected', () => {
