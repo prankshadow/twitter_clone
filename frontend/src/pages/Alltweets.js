@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Tweet from '../components/Tweet'
 
 const Alltweets = () => {
+
+    const getAllPosts = () => {
+        console.log('Get all posts');
+    }
+    useEffect(() => {
+        getAllPosts();
+    }, []);
+
     return (
         <div className='col-md-7'>
 

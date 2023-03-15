@@ -69,8 +69,8 @@ router.post('/createpost', fetchuser, [
 //     }
 // });
 
-
-router.get('/allposts', fetchuser, async (req, res) => {
+// Get specific user post
+router.get('/myposts', fetchuser, async (req, res) => {
     try {
         const posts = await PostModel.find({ author: req.user.id });
         res.json(posts)
@@ -80,7 +80,16 @@ router.get('/allposts', fetchuser, async (req, res) => {
     }
 })
 
-
+// Get  all user posts
+router.get('/allposts', fetchuser, async (req, res) => {
+    try {
+        const posts = await PostModel.find({ id: req.user.id });
+        res.json(posts)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Internal Server Error");
+    }
+})
 
 
 
