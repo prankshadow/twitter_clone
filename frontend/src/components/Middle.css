@@ -1,0 +1,22 @@
+.profile-pic-m {
+    vertical-align: middle;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid whitesmoke;
+}
+
+.user-name {
+    font-size: x-large;
+}
+
+.edit-button {
+    border-radius: 30rem;
+}
+
+.img-post {
+    display: block;
+    max-width: 70%;
+    height: auto;
+}
+

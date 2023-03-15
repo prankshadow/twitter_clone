@@ -1,0 +1,32 @@
+body {
+    /* font-family: 'Zilla Slab', serif; */
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    width: 50%;
+}
+
+.RegisterButton {
+    background-color: #00acee;
+    border: none;
+}
+
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.comment {
+    font-size: xx-large;
+}
+
+.join-us {
+    font-size: xx-large;
+}
+
+.signin {
+    color: #00acee;
+}
