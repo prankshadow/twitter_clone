@@ -6,9 +6,20 @@ const HomepageTweet = (props) => {
 
 
         <div className='card'>
-            <div className='d-flex p-2'>
-                <img src='http://bit.ly/3yA6Z9D' className='profile-pic img-fluid' alt='profile' />
-                <h6 className='my-auto ps-2'>Prank Shadow homepage</h6>
+            <div className='d-flex p-2 d-flex justify-content-between'>
+                <div className='d-inline-flex p-2 '>
+                    <img src='http://bit.ly/3yA6Z9D' className='profile-pic img-fluid' alt='profile' />
+                    <h6 className='my-auto ps-2'>Prank Shadow homepage</h6>
+                </div>
+                <div className='justify-content-end my-auto me-3'>
+                    <div class="btn-group dropstart">
+                        <button className='btn btn-secondary' data-bs-toggle="dropdown" aria-expanded="false" style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-solid fa-ellipsis-vertical fs-4"></i></button>
+                        <ul class="dropdown-menu">
+                            <li><button className="dropdown-item">Edit</button></li>
+                            <li><button className="dropdown-item">Delete</button></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div className='card-body'>
                 <p className='card-text'>{props.postData.description}</p>
