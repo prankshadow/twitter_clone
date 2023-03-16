@@ -83,7 +83,8 @@ router.get('/myposts', fetchuser, async (req, res) => {
 // Get  all user posts
 router.get('/allposts', fetchuser, async (req, res) => {
     try {
-        const posts = await PostModel.find({ id: req.user.id });
+        const posts = await PostModel.find({ id: req.user.id })
+            .populate('comments.commentedBy', '_id fullName')
         res.json(posts)
     } catch (error) {
         console.error(error.message);

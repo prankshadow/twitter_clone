@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import { useSelector } from 'react-redux'
 import './Tweetloginuser.css'
 import { API_BASE_URL } from '../config'
@@ -6,14 +6,15 @@ import { API_BASE_URL } from '../config'
 import axios from 'axios';
 
 const HomepageTweet = (props) => {
-
-    
     const CONFIG_OBJ = {
         headers: {
             "Content-Type": "application/json",
             "authentication": localStorage.getItem("authentication")
         }
     }
+
+    const [commentBox, setCommentBox] = useState(false);
+    const [comment, setComment] = useState('')
 
     // const user = useSelector(state => state.userReducer);
     // console.log(user);
@@ -40,7 +41,14 @@ const HomepageTweet = (props) => {
         }
     }
     //comment
-    
+    const submitComment = async (postId) => {
+        setCommentBox(false)
+        const request = { "postId": postId, "commentText": comment };
+        const response = await axios.put(`${API_BASE_URL}/comment`, request, CONFIG_OBJ);
+        if (response.status === 200) {
+            props.getAllPosts();
+        }
+    }
 
 
     return (
@@ -66,10 +74,24 @@ const HomepageTweet = (props) => {
 
                 <div className='ps-3'>
                     <button className='pe-3' style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-regular fa-heart pe-1" onClick={() => likeTweet(props.postData._id)} style={{ 'color': 'red' }}></i>{props.postData.likes.length}</button>
-                    <button className='pe-3' style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-regular fa-comment pe-1" style={{ 'color': 'blue' }}></i>0</button>
-                    <button className='pe-3' style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-solid fa-retweet pe-1"  style={{ 'color': '#00C301' }}></i>0</button>
+                    <button className='pe-3' onClick={() => setCommentBox(true)} style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-regular fa-comment pe-1" style={{ 'color': 'blue' }}></i>0</button>
+                    <button className='pe-3' style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-solid fa-retweet pe-1" style={{ 'color': '#00C301' }}></i>0</button>
                 </div>
-                
+
+                {/* comment button */}
+                {commentBox ? <div className="my-3">
+                    <textarea onChange={(e) => setComment(e.target.value)} className="form-control" rows="3"></textarea>
+                    <button onClick={() => submitComment(props.postData._id)} className='btn btn-warning mt-3'>Comment</button>
+                </div> : ''}
+
+                {props.postData.comments.map((comment) => {
+                    return (
+                        <div className="my-3" key={comment._id}>
+                            <p>{comment.commentText} - {comment.commentedBy.fullName}</p>
+                        </div>
+                    )
+                })}
+
             </div>
         </div>
 
