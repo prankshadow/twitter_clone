@@ -61,7 +61,7 @@ const Alltweets = () => {
                     {allposts.map((post) => {
                         return (
                             <div key={post._id}>
-                                <Homepagetweet postData={post} deletePost={deletePost} />
+                                <Homepagetweet postData={post} deletePost={deletePost} getAllPosts={getAllPosts}/>
                             </div>
                         )
                     })}
