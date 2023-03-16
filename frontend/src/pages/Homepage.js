@@ -6,11 +6,13 @@ export const Homepage = () => {
     return (
         <>
             {/* <div className="container"> */}
-                <div className="row">
-                    <Left />
-                    <Middle />
-                </div>
+            <div className="row">
+                <Left />
+                <Middle />
+            </div>
             {/* </div> */}
         </>
     )
 }
+
+export default Homepage;

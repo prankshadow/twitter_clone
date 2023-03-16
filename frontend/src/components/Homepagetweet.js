@@ -1,25 +1,39 @@
 import React from 'react'
+// import { useSelector } from 'react-redux'
 import './Tweetloginuser.css'
 
 const HomepageTweet = (props) => {
+    // const user = useSelector(state => state.userReducer);
+    // console.log(user);
+    // const xyz = localStorage.getItem("user")
+    // console.log(props.postData.author);
+    // console.log(user.user._id);
+
+
+    // localStorage.setItem('headers.user', JSON.stringify(CONFIG_OBJ))
+    // var val = localStorage.getItem('user')
+    // var object = JSON.parse(val);
+    // console.log('id: ', object);
+    const getUser = window.localStorage.getItem('user')
+    let specificUser = JSON.parse(getUser);
+    // console.log(specificUser._id);
+
     return (
-
-
         <div className='card'>
             <div className='d-flex p-2 d-flex justify-content-between'>
                 <div className='d-inline-flex p-2 '>
                     <img src='http://bit.ly/3yA6Z9D' className='profile-pic img-fluid' alt='profile' />
                     <h6 className='my-auto ps-2'>Prank Shadow homepage</h6>
                 </div>
-                <div className='justify-content-end my-auto me-3'>
-                    <div class="btn-group dropstart">
+                {props.postData.author === specificUser._id ? <div className='justify-content-end my-auto me-3'>
+                    <div className="btn-group dropstart">
                         <button className='btn btn-secondary' data-bs-toggle="dropdown" aria-expanded="false" style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-solid fa-ellipsis-vertical fs-4"></i></button>
-                        <ul class="dropdown-menu">
+                        <ul className="dropdown-menu">
                             <li><button className="dropdown-item">Edit</button></li>
                             <li><button className="dropdown-item">Delete</button></li>
                         </ul>
                     </div>
-                </div>
+                </div> : ''}
             </div>
             <div className='card-body'>
                 <p className='card-text'>{props.postData.description}</p>

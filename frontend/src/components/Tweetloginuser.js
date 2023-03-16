@@ -12,9 +12,9 @@ const Tweet = (props) => {
                         <h6 className='my-auto ps-2'>Prank Shadow</h6>
                     </div>
                     <div className='justify-content-end my-auto me-3'>
-                        <div class="btn-group dropstart">
+                        <div className="btn-group dropstart">
                             <button className='btn btn-secondary' data-bs-toggle="dropdown" aria-expanded="false" style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-solid fa-ellipsis-vertical fs-4"></i></button>
-                            <ul class="dropdown-menu">
+                            <ul className="dropdown-menu">
                                 <li><button className="dropdown-item">Edit</button></li>
                                 <li><button className="dropdown-item">Delete</button></li>
                             </ul>

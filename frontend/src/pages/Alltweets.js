@@ -16,11 +16,12 @@ const Alltweets = () => {
 
     const getAllPosts = async () => {
 
-        console.log('Get all posts');
+        // console.log('Get all posts');
         const response = await axios.get(`${API_BASE_URL}/allposts`, CONFIG_OBJ);
 
         if (response.status === 200) {
             setAllposts(response.data)
+            // console.log(response.data);
         } else {
             Swal.fire({
                 icon: 'error',
@@ -52,7 +53,7 @@ const Alltweets = () => {
                 <div>
                     {allposts.map((post) => {
                         return (
-                            <div>
+                            <div key={post._id}>
                                 <Homepagetweet postData={post} />
                             </div>
                         )
