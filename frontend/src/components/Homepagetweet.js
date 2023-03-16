@@ -23,14 +23,14 @@ const HomepageTweet = (props) => {
             <div className='d-flex p-2 d-flex justify-content-between'>
                 <div className='d-inline-flex p-2 '>
                     <img src='http://bit.ly/3yA6Z9D' className='profile-pic img-fluid' alt='profile' />
-                    <h6 className='my-auto ps-2'>Prank Shadow homepage</h6>
+                    <h6 className='my-auto ps-2'>{props.postData.author}</h6>
                 </div>
                 {props.postData.author === specificUser._id ? <div className='justify-content-end my-auto me-3'>
                     <div className="btn-group dropstart">
                         <button className='btn btn-secondary' data-bs-toggle="dropdown" aria-expanded="false" style={{ 'textDecoration': 'none', 'color': 'black', 'border': 'none', 'backgroundColor': 'transparent' }}><i className="fa-solid fa-ellipsis-vertical fs-4"></i></button>
                         <ul className="dropdown-menu">
                             <li><button className="dropdown-item">Edit</button></li>
-                            <li><button className="dropdown-item">Delete</button></li>
+                            <li><button className="dropdown-item" onClick={() => props.deletePost(props.postData._id)}>Delete</button></li>
                         </ul>
                     </div>
                 </div> : ''}

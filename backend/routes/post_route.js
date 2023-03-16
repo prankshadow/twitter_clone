@@ -114,7 +114,7 @@ router.get('/allposts', fetchuser, async (req, res) => {
 
 
 // ROUTER 3 :-> Update the entry. 
-router.put('/updatesale/:id', fetchuser, [
+router.put('/updatepost/:id', fetchuser, [
     body('productName', 'Enter a valid productName'),
     body('quantity', 'Enter a valid quantity'),
     body('amount', 'Enter a valid amount')
@@ -156,7 +156,7 @@ router.put('/updatesale/:id', fetchuser, [
 })
 
 // ROUTER 4 :-> Delete the entry. 
-router.delete('/deletesale/:id', fetchuser, async (req, res) => {
+router.delete('/deletepost/:id', fetchuser, async (req, res) => {
 
     try {
         //Find the sale an delete it

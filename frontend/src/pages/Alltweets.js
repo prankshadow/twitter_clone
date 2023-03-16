@@ -31,6 +31,13 @@ const Alltweets = () => {
 
     }
 
+    const deletePost = async(postId) => {
+        const response = await axios.delete(`${API_BASE_URL}/deletepost/${postId}`, CONFIG_OBJ);
+        if (response.status === 200){
+            getAllPosts();
+        }
+    }
+
     useEffect(() => {
         getAllPosts();
         // eslint-disable-next-line
@@ -54,7 +61,7 @@ const Alltweets = () => {
                     {allposts.map((post) => {
                         return (
                             <div key={post._id}>
-                                <Homepagetweet postData={post} />
+                                <Homepagetweet postData={post} deletePost={deletePost} />
                             </div>
                         )
                     })}
