@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Signup.css'
 import { API_BASE_URL } from '../config'
 import Swal from 'sweetalert2'
@@ -11,12 +11,14 @@ const Signup = () => {
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [userName, setUserName] = useState("");
 
+    const navigate = useNavigate();
 
     const signup = (event) => {
         event.preventDefault();
         // setLoading(true);
-        const requestData = { fullName, email, password }
+        const requestData = { fullName, email, password, userName }
         axios.post(`${API_BASE_URL}/signup`, requestData)
             .then((result) => {
                 if (result.status === 201) {
@@ -29,6 +31,8 @@ const Signup = () => {
                 setFullName('');
                 setEmail('');
                 setPassword('');
+                setUserName('');
+                navigate('/');
             })
             .catch((error) => {
                 console.log(error);
@@ -73,14 +77,21 @@ const Signup = () => {
                                         onChange={(ev) => setEmail(ev.target.value)}
                                     />
                                 </div>
-                                <div className="mb-4">
+                                <div className="mb-3">
                                     <input type="password" className="form-control" id="exampleInputPassword2" placeholder='Password'
                                         autoComplete="on"
                                         value={password}
                                         onChange={(ev) => setPassword(ev.target.value)}
-
                                     />
                                 </div>
+                                <div className="input-group mb-4">
+                                    <span className="input-group-text" id="basic-addon1">@</span>
+                                    <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"
+                                        value={userName}
+                                        onChange={(ev) => setUserName(ev.target.value)}
+                                    />
+                                </div>
+
                                 <button type="submit" className="btn btn-primary RegisterButton">Register</button>
                                 <div className='pt-4'>
                                     <p className='text-muted'>Already a user? <Link to='/' className='signin'>Sign In</Link></p>

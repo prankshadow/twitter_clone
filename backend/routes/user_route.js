@@ -16,6 +16,7 @@ router.post("/signup", [
     body('fullName', 'Enter a valid name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
     body('password', 'Enter a valid password').isLength({ min: 5 }),
+    body('userName', 'Enter a valid username').isLength({ min: 3 }),
 ], async (req, res) => {
 
     const errors = validationResult(req);
@@ -36,6 +37,7 @@ router.post("/signup", [
         user = await UserModel.create({
             fullName: req.body.fullName,
             email: req.body.email,
+            userName: req.body.userName,
             password: securePassword,
             profileImg: req.body.profileImg
         })
