@@ -102,18 +102,6 @@ const Left = () => {
                         <Link to='/home' style={{ "textDecoration": "none", "color": "black" }}><p><i className="fa-solid fa-house pe-4"></i>Home</p></Link>
                     </div>
                     <div className='p-2'>
-                        <a href='/' style={{ "textDecoration": "none", "color": "black" }}><p><i className="fa-solid fa-hashtag pe-4"></i>Explore</p></a>
-                    </div>
-                    <div className='p-2'>
-                        <a href='/' style={{ "textDecoration": "none", "color": "black" }}><p><i className="fa-regular fa-bell pe-4"></i>Notifications</p></a>
-                    </div>
-                    <div className='p-2'>
-                        <a href='/' style={{ "textDecoration": "none", "color": "black" }}><p><i className="fa-regular fa-envelope pe-4"></i>Message</p></a>
-                    </div>
-                    <div className='p-2'>
-                        <a href='/' style={{ "textDecoration": "none", "color": "black" }}><p><i className="fa-regular fa-bookmark pe-4"></i>Bookmarks</p></a>
-                    </div>
-                    <div className='p-2'>
                         <Link to='/homepage' style={{ "textDecoration": "none", "color": "black" }}><p><i className="fa-solid fa-user pe-4"></i>Profile</p></Link>
                     </div>
                     <div className='p-2'>

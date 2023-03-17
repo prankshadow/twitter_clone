@@ -8,7 +8,7 @@ const Tweet = (props) => {
     const user = useSelector(state => state.userReducer)
 
     return (
-        <div>
+        <div className='pb-3'>
             <div className='card'>
                 <div className='d-flex p-2 d-flex justify-content-between'>
                     <div className='d-inline-flex p-2 '>
@@ -30,11 +30,6 @@ const Tweet = (props) => {
                     <p className='card-text'>{props.postData.description}</p>
                     <img src={props.postData.image} className='tweet-pic img-fluid pb-3' alt='tweet' />
 
-                    <div className='ps-3'>
-                        <a href='/' className='pe-3' style={{ 'textDecoration': 'none', 'color': 'black' }}><i className="fa-regular fa-heart pe-1" style={{ 'color': 'red' }}></i>0</a>
-                        <a href='/' className='pe-3' style={{ 'textDecoration': 'none', 'color': 'black' }}><i className="fa-regular fa-comment pe-1" style={{ 'color': 'blue' }}></i>0</a>
-                        <a href='/' className='pe-3' style={{ 'textDecoration': 'none', 'color': 'black' }}><i className="fa-solid fa-retweet pe-1" style={{ 'color': '#00C301' }}></i>0</a>
-                    </div>
                 </div>
             </div>
         </div >

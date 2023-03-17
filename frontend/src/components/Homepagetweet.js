@@ -56,7 +56,7 @@ const HomepageTweet = (props) => {
             <div className='d-flex p-2 d-flex justify-content-between'>
                 <div className='d-inline-flex p-2 '>
                     <img src='http://bit.ly/3yA6Z9D' className='profile-pic img-fluid' alt='profile' />
-                    <h6 className='my-auto ps-2'>{props.postData.author.userName}</h6>
+                    <h6 className='my-auto ps-2'>@{props.postData.author.userName}</h6>
                 </div>
                 {props.postData.author._id === specificUser._id ? <div className='justify-content-end my-auto me-3'>
                     <div className="btn-group dropstart">
@@ -89,7 +89,7 @@ const HomepageTweet = (props) => {
                         <div className="my-3" key={comment._id}>
                             <hr />
                             <h6>{comment.commentedBy.fullName}</h6>
-                            <p className='text-muted'>Replying to @{props.postData.author}</p>
+                            <p className='text-muted'>Replying to @{props.postData.author.userName}</p>
                             <p>{comment.commentText}</p>
 
                         </div>
