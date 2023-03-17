@@ -87,7 +87,11 @@ const HomepageTweet = (props) => {
                 {props.postData.comments.map((comment) => {
                     return (
                         <div className="my-3" key={comment._id}>
-                            <p>{comment.commentText} - {comment.commentedBy.fullName}</p>
+                            <hr />
+                            <h6>{comment.commentedBy.fullName}</h6>
+                            <p className='text-muted'>Replying to @{props.postData.author}</p>
+                            <p>{comment.commentText}</p>
+
                         </div>
                     )
                 })}

@@ -45,9 +45,9 @@ const Alltweets = () => {
 
     return (
         <>
-            <div className='col-md-7'>
+            <div className='col-md-7 mt-4'>
 
-                <div>
+                {/* <div>
                     <div className="mb-3">
                         <label htmlFor="exampleFormControlTextarea1" className="form-label fs-4 fw-semibold pt-1">Home</label>
                         <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='Tweet something....'></textarea>
@@ -55,7 +55,7 @@ const Alltweets = () => {
                             <button className='btn btn-primary make-a-tweet' type='submit'>Tweet</button>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div>
                     {allposts.map((post) => {
