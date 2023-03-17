@@ -72,7 +72,8 @@ router.post('/createpost', fetchuser, [
 // Get specific user post
 router.get('/myposts', fetchuser, async (req, res) => {
     try {
-        const posts = await PostModel.find({ author: req.user.id });
+        const posts = await PostModel.find({ author: req.user.id })
+            .populate("author", "_id fullName profileImg userName")
         res.json(posts)
     } catch (error) {
         console.error(error.message);
@@ -83,7 +84,8 @@ router.get('/myposts', fetchuser, async (req, res) => {
 // Get  all user posts
 router.get('/allposts', fetchuser, async (req, res) => {
     try {
-        const posts = await PostModel.find({ id: req.user.id })
+        const posts = await PostModel.find()
+            .populate("author", "_id fullName profileImg userName")
             .populate('comments.commentedBy', '_id fullName')
         res.json(posts)
     } catch (error) {

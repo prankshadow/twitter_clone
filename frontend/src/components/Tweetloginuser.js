@@ -14,7 +14,7 @@ const Tweet = (props) => {
                     <div className='d-inline-flex p-2 '>
                         <img src='http://bit.ly/3yA6Z9D' className='profile-pic img-fluid' alt='profile' />
                         {/* <h6 className='my-auto ps-2'>{props.postData.author}</h6> */}
-                        <h6 className='my-auto ps-2'>{user.user.fullName}</h6>
+                        <h6 className='my-auto ps-2'>{user.user.userName}</h6>
                     </div>
                     <div className='justify-content-end my-auto me-3'>
                         <div className="btn-group dropstart">
